@@ -1,0 +1,26 @@
+html
+	head
+		title Chart the Stock Market - FCC project
+		link(rel="stylesheet", href="css/style.css")
+	body
+		header
+			h1 stocks
+		.main
+			.container
+				svg#graph(preserveAspectRatio="xMidYMid meet")
+				.legend
+					form#stock-form(action="#")
+						h4 Load more data
+						.input-block
+							input#stock-input(type="text" placeholder="Stock code")
+							input(type="submit" value="Add")
+						.form-status#status loading data
+					ul#code-list
+						li#item-template 
+							.code {code}
+							.name {name}
+		footer
+
+
+
+	script(src="js/app.js")

@@ -1,0 +1,35 @@
+{
+  "name": "stock",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "d3": "^3.5.17",
+    "express": "^4.13.4",
+    "jade": "^1.11.0",
+    "moment": "^2.13.0",
+    "morgan": "^1.7.0",
+    "nanoajax": "^0.4.3",
+    "request": "^2.72.0",
+    "reset-css": "^2.0.2011012603",
+    "serve-favicon": "^2.3.0",
+    "socket.io": "^1.4.6"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.12.5",
+    "browserify": "^13.0.1",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-live-server": "0.0.29",
+    "gulp-rimraf": "^0.2.0",
+    "gulp-sass": "^2.3.1",
+    "mathsass": "^0.9.5",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}

@@ -1,0 +1,272 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+@import "../../node_modules/reset-css/_reset.scss";
+@import "./../../node_modules/mathsass/dist/_math.scss";
+
+$bg: #455a64;
+$bg-light: #607d8b;
+$bg-dark: #263238;
+
+$fg: #fff59d;
+$fg-light: #fffde7;
+$fg-dark: #ffee58;
+
+$acc: #4DD0E1;
+
+$c: #ff4081,#ea80fc,#64ffda,#b2ff59,#7c4dff,#ffd740,#448aff,#18ffff;
+
+@function loaderBg($num, $col){
+	$r: ();
+	$a: 300deg/$num;
+	$d: 30;
+	@for $i from 0 to $num{
+		$px: 50% + cos($a*$i)*$d;
+		$py: 50% + sin($a*$i)*$d;
+		$s: 15% + 2% * $i;
+		$g: radial-gradient($s $s ellipse at $px $py, $col $s, transparent $s*2);
+		$r: append($r,$g, comma);
+			}
+	@return $r;
+}
+
+*{
+	box-sizing: border-box;
+}
+body{
+	font-family: 'Roboto', sans-serif;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	background-color: $bg;
+	color: $fg-light;
+}
+header, footer{
+	min-height: 5vh;
+	background-color: $bg-dark;
+}
+.main{
+	width: 80%;
+	min-width: 600px;
+	margin: 40px auto;
+	flex-grow: 1;
+}
+.container{
+	width: 100%;
+	padding: 10px;
+	background: $bg-dark;
+	box-shadow: 0px 2px 4px 2px transparentize($bg-dark, .5);
+}
+h1{
+	text-align: center;
+	font-size: 2em;
+	margin-bottom: 10px;
+}
+svg{
+	width: 100%;
+	border: thin solid $bg-light;
+}
+.legend{
+	margin-top: 10px;
+	display: flex;
+	form{
+		padding: 4px;
+		width: 300px;
+		flex-shrink: 0;
+		border: thin solid $bg-light;
+		.input-block{
+	    	text-align: center;
+		}
+		.form-status{
+			text-align: center;
+			padding: 8px 0;
+			margin-top: 10px;
+			transition: opacity 1s;
+			&.flash{
+				opacity: 0;
+				animation: f 4s both;
+			}
+			&.loading{
+				color: $fg-light;
+				&:after{
+					content: "";
+					display: inline-block;
+					width: 16px;
+					height: 16px;
+					vertical-align: middle;
+					margin-left: 4px;
+					background-image: loaderBg(6, $fg-light);
+					animation: r 1s infinite linear;
+				}
+			}
+			&.loaded{
+				color: nth($c, 3);
+			}
+			&.error{
+				color: nth($c, 1);	
+			}
+		}
+		h4{
+			text-align: center;
+			padding: 8px 0;
+		}
+		input[type="text"]{
+			padding: 6px;
+		    border-radius: 16px 0 0 16px;
+		    text-indent: 10px;
+		    border: none;
+		    font-size: medium;
+			&:focus{
+			  outline: none;
+			}
+		}
+		input[type="submit"]{
+			padding: 6px 20px;
+			border-radius: 0 16px 16px 0;
+			background-color: $bg-light;
+			cursor: pointer;
+			border: none;
+			color: $fg-light;
+			font-size: medium;
+			&:hover{
+				background-color: $fg;
+				color: $bg-dark;
+			}
+			&:focus{
+			  outline: none;
+			}
+		}
+	}
+	ul{
+		margin-left: 10px;
+		border: thin solid $bg-light;
+		padding: 5px;
+		flex-grow: 1;
+		display: flex;
+		flex-wrap: wrap;
+		background: transparent;
+	}
+}
+.stock-item{
+	flex-basis: calc(50% - 8px);
+	flex-grow: 1;
+	min-width: 200px;
+    padding: 4px;
+    border: thin solid $bg-light;
+    background-clip: content-box;
+    margin: 4px;
+    cursor: pointer;
+    position: relative;
+    &:after{
+		content: "\2718";
+		position: absolute;
+		right: 3px;
+		top: 3px;
+		display: none;
+    }
+    &:hover:after{
+    	display: block;
+    }
+    .code, .name{
+    	padding: 6px;
+    	text-align: center;
+    }
+    .code{
+    	font-size: large;
+    }
+    .name{
+    	font-size: medium;
+    }
+}
+#item-template{
+	display: none;
+}
+.line{
+	stroke-width: 1;
+	fill: none;
+	clip-path: url(#clip);
+}
+.x-axis, .y-axis, .b-axis{
+	.domain{
+		fill: none;
+		stroke: $fg-light;
+	}
+	.tick{
+		text{
+			fill: $fg-light;
+			font-size: small;
+		}
+		line{
+			stroke: transparentize($fg-light, .8);
+		}
+	}
+}
+.label{
+	font-size: small;
+}
+@for $i from 0 to length($c){
+	$ic: nth($c, $i + 1);
+	.stock-#{$i}{
+		color: $ic;
+	}
+	.line-#{$i}{
+		stroke: $ic;
+	}
+	.label-#{$i}{
+		fill: $ic;
+	}
+	.tooltip-group-#{$i}{
+		.tooltip-label{
+			fill: $ic;		
+		}
+		.tooltip-mark{
+			fill: $ic;
+		}
+	}
+}
+.tooltip{
+	display: none;
+	line{
+		stroke: $fg;
+	}
+	.tooltip-group{
+		.tooltip-label{
+			font-style: italic;
+			font-size: small;
+		}
+		.tooltip-mark{
+			opacity: .8;
+		}
+	}
+	.label-bg{
+		fill: transparentize($bg-dark, .2);
+	}
+	.date-label{
+		fill: $fg;
+		font-style: italic;
+		font-size: x-small;
+		&.week-day{
+			fill: nth($c, 1);	
+		}
+	}
+}
+.brush{
+	.brush-bg{
+		fill: $bg-dark;
+		visibility: visible;
+	}
+	.extent{
+		fill: $fg;
+		stroke: transparentize($fg, .3);
+		fill-opacity: .4;
+	}
+}
+@keyframes f{ 
+	25%{
+		opacity: 1;
+	}
+}
+
+@keyframes r{ 
+	to{
+		transform: rotate(1turn);
+	}
+}

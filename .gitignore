@@ -1,0 +1,7 @@
+public
+node_modules
+deploy
+server/config/db-config.js
+server/config/oauth-config.js
+server/config/google-places-config.js
+server/config/foursquare-config.js
