@@ -1,5 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto);
-@import "../../node_modules/reset-css/_reset.scss";
+@import "./../../node_modules/reset-css/_reset.scss";
 @import "./../../node_modules/mathsass/dist/_math.scss";
 
 $bg: #455a64;
@@ -43,6 +43,25 @@ header, footer{
 	min-height: 5vh;
 	background-color: $bg-dark;
 }
+footer{
+	padding: 6px;
+	display: flex;
+	justify-content: center;
+    align-items: center;
+    font-size: 1em;
+    color: $fg-light;
+    a{
+    	color: $fg-light;
+		margin: 6px;
+    }
+    .glyph{
+    	fill: $fg-light;
+    }
+    .svg-glyph{
+    	width: 1em;
+    	height: 1em;
+    }
+}
 .main{
 	width: 80%;
 	min-width: 600px;
@@ -60,7 +79,7 @@ h1{
 	font-size: 2em;
 	margin-bottom: 10px;
 }
-svg{
+svg#graph{
 	width: 100%;
 	border: thin solid $bg-light;
 }
@@ -256,9 +275,10 @@ svg{
 	.extent{
 		fill: $fg;
 		stroke: transparentize($fg, .3);
-		fill-opacity: .4;
+		fill-opacity: .2;
 	}
 }
+
 @keyframes f{ 
 	25%{
 		opacity: 1;
