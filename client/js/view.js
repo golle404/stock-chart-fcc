@@ -5,7 +5,7 @@ module.exports.View = function(_listener){
 
 	var listener = _listener;
 	var graph = new Graph();
-	var form, input, codeList, status, templateHTML;
+	var form, input, codeList, status, templateHTML, modal, aboutBtn;
 	var nodes = []
 
 	this.init = function(){
@@ -15,8 +15,17 @@ module.exports.View = function(_listener){
 		form = document.getElementById('stock-form');
 		input = document.getElementById('stock-input');
 		status = document.getElementById('status');
+		modal = document.getElementById('modal');
+		aboutBtn = document.getElementById('about-btn');
 		form.addEventListener("submit", formSubmit);
 		graph.init();
+
+		aboutBtn.addEventListener("click", function(){
+			modal.classList.add("show");
+		})
+		modal.addEventListener("click", function(){
+			modal.classList.remove("show");
+		})
 	}
 	var formSubmit = function(e){
 		e.preventDefault();

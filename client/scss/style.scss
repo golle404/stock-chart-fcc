@@ -31,6 +31,10 @@ $c: #ff4081,#ea80fc,#64ffda,#b2ff59,#7c4dff,#ffd740,#448aff,#18ffff;
 *{
 	box-sizing: border-box;
 }
+html{
+	font-size: 16px;
+	line-height: 100%;
+}
 body{
 	font-family: 'Roboto', sans-serif;
 	min-height: 100vh;
@@ -38,6 +42,7 @@ body{
 	flex-direction: column;
 	background-color: $bg;
 	color: $fg-light;
+	line-height: 100%;
 }
 header, footer{
 	min-height: 5vh;
@@ -62,6 +67,84 @@ footer{
     	height: 1em;
     }
 }
+.modal{
+	position: fixed;
+	top: -100vh;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: transparentize($bg-dark, .2);
+	z-index: 1000;
+	//display: none;
+	transition: top 350ms;
+	cursor: pointer;
+	&.show{
+		top: 0;
+	}
+	.about{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		padding: 2em;
+		background-color: $bg-light;
+		h2{
+			font-size: 2em;
+			text-align: center;
+			padding: 10px;
+			margin-bottom: 1em;
+		}
+		h4{
+			font-size: 1.3em;
+			padding: 6px;
+		}
+		p{
+			padding: 4px;
+			line-height: 130%;
+		}
+		ul{
+			list-style: initial;
+			margin-left: 2em;
+		}
+		li{
+			padding: 4px;	
+		}
+	}
+	a{
+		color: $bg-dark;
+		background: $fg-light;
+		text-decoration: none;
+		padding: 2px 4px;
+		&:hover{
+			color: $fg-light;
+			background-color: $bg-dark;
+		}
+	}
+}
+header{
+	padding: 10px;
+	h1{
+		padding: 8px;
+		font-size: 2em;
+		display: inline-block;
+	}
+	.btn{
+		float: right;
+		clear: both;
+		display: inline-block;
+		line-height: 2em;
+		padding: 4px 10px;
+		background-color: $fg-light;
+		color: $bg-dark;
+		margin-right: 1em;
+		cursor: pointer;
+		transition: all 150ms;
+		&:hover{
+			color: $fg-light;
+			background-color: $bg;
+		}
+	}
+}
 .main{
 	width: 80%;
 	min-width: 600px;
@@ -73,11 +156,6 @@ footer{
 	padding: 10px;
 	background: $bg-dark;
 	box-shadow: 0px 2px 4px 2px transparentize($bg-dark, .5);
-}
-h1{
-	text-align: center;
-	font-size: 2em;
-	margin-bottom: 10px;
 }
 svg#graph{
 	width: 100%;

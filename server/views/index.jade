@@ -4,7 +4,33 @@ html
 		link(rel="stylesheet", href="css/style.css")
 	body
 		header
-			h1 stocks
+			h1 StockWatch
+			.btn#about-btn About
+		.modal#modal
+			.about
+				h2 About StockWatch
+				p  StockWatch is my impementation of FreeCodeCamp 
+					a(href="https://www.freecodecamp.com/challenges/chart-the-stock-market") "Chart the Stock Market"
+					|  challenge
+				p 
+					a(href="https://www.freecodecamp.com") FreeCodeCamp
+					|  is an open source community that helps you learn to code.
+				h4 Main tools and libraries used:
+				ul
+					li
+						a(href="https://nodejs.org/en/") Node.js
+					li
+						a(href="http://expressjs.com/") Express.js
+					li
+						a(href="http://socket.io/") socket.io
+					li
+						a(href="http://sass-lang.com/") Sass(scss)
+
+				p Data provided by 
+					a(href="https://www.quandl.com/") Quandl API
+				p
+					a(href="https://github.com/golle404/stock-chart-fcc") Source code
+					|  on GitHub
 		.main
 			.container
 				svg#graph(preserveAspectRatio="xMidYMid meet")
