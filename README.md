@@ -1,6 +1,6 @@
-# About StockWatch
+# StockWatch
 
-
+[Live Preview]("https://stock-watch-fcc.herokuapp.com/")
 StockWatch is my impementation of FreeCodeCamp ["Chart the Stock Market"]("https://www.freecodecamp.com/challenges/chart-the-stock-market") challenge
 
 
@@ -9,9 +9,9 @@ StockWatch is my impementation of FreeCodeCamp ["Chart the Stock Market"]("https
 
 ### Main tools and libraries used:
 
-*[Node.js]("https://nodejs.org/en/") 
-*[Express.js]("http://expressjs.com/") 
-*[socket.io]("http://socket.io/") 
+*[Node.js]("https://nodejs.org/en/")
+*[Express.js]("http://expressjs.com/")
+*[socket.io]("http://socket.io/")
 *[SASS(scss)]("http://sass-lang.com/")
 
 

@@ -1,6 +1,5 @@
 "use strict";
 var nanoajax = require("nanoajax");
-
 var io = require('socket.io-client');
 
 var Model = require("./model.js").Model;
